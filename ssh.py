@@ -1,14 +1,14 @@
 import paramiko
 
 
-def ssh_command(hostname, port, username, passwd, command):
+def ssh_command(hostname, username, passwd):
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
     try:
-        ssh_client.connect(hostname=hostname, port= port, username= username, password=passwd)
+        ssh_client.connect(hostname=hostname, username= username, password=passwd)
         print("Connected to", hostname)
-
+        command = "ls -l"
         stdin, stdout, stderr = ssh_client.exec_command(command)
         # stdin, stdout, stderr inbuilt variables
 
@@ -28,9 +28,7 @@ def ssh_command(hostname, port, username, passwd, command):
         print("Connection Closed.")
 
 if __name__ == "__main__":
-    hostname = "192.168.29.37"
-    port = 22
+    shh_ip = "192.168.29.37"
     username = "jh"
     passwd = "jh@123456"
-    command = "ls -l"
-    ssh_command(hostname, port, username, passwd, command)
+    ssh_command(ssh_ip, username, passwd)
