@@ -1,4 +1,5 @@
 import paramiko
+import sys
 
 
 def ssh_command(hostname, username, passwd):
@@ -28,7 +29,7 @@ def ssh_command(hostname, username, passwd):
         print("Connection Closed.")
 
 if __name__ == "__main__":
-    shh_ip = "192.168.29.37"
-    username = "jh"
-    passwd = "jh@123456"
+    shh_ip = sys.argv[0]
+    username = sys.argv[1]
+    passwd = sys.argv[2]
     ssh_command(ssh_ip, username, passwd)
